@@ -1,5 +1,6 @@
 import Navbar from './components/layout/Navbar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './components/layout/Home'
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home />} />
           <Route path="/about" />
           <Route path="/notfound" />
           {/* the path "/*" means every route that isn't found

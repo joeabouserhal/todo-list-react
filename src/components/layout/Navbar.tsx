@@ -1,12 +1,20 @@
+import { GoTasklist } from 'react-icons/go'
+import { Link } from 'react-router-dom'
+
 const Navbar = () => {
   return (
-    <nav className="navbar flex justify-between">
+    <nav className="navbar flex justify-between px-5 shadow-md">
       <div>
-        <h1 className="text-lg font-sans">To-Do List</h1>
+        <GoTasklist size="5vh" className="mr-5" />
+        <h1 className="text-lg">To-Do List</h1>
       </div>
       <div>
-        <button className="btn btn-ghost font-sans">Home</button>
-        <button className="btn btn-ghost font-sans">About</button>
+        <Link to={'/'}>
+          <button className="btn btn-ghost">Home</button>
+        </Link>
+        <Link to={'/about'}>
+          <button className="btn btn-ghost">About</button>
+        </Link>
       </div>
     </nav>
   )
