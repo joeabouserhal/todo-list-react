@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoTasklist } from 'react-icons/go'
+import { GoTasklist, GoHome, GoInfo } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
@@ -9,12 +9,18 @@ const Navbar: React.FC = () => {
         <GoTasklist size="5vh" className="mr-5" />
         <h1 className="text-lg">To-Do List</h1>
       </div>
-      <div>
+      <div className="gap-2">
         <Link to={'/'}>
-          <button className="btn btn-ghost">Home</button>
+          <button className="btn btn-ghost capitalize gap-2">
+            <GoHome size="1.5rem" />
+            Home
+          </button>
         </Link>
         <Link to={'/about'}>
-          <button className="btn btn-ghost">About</button>
+          <button className="btn btn-ghost capitalize gap-2">
+            <GoInfo size="1.5rem"/>
+            About
+          </button>
         </Link>
       </div>
     </nav>

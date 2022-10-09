@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const TaskContext = createContext<any>(undefined)
 
@@ -8,15 +8,20 @@ export type TaskType = {
   body: string
 }
 
-const exampleTasks: TaskType[] = [
-  {
-    title: 'test title',
-    body: 'test body',
-  },
-]
-
 export const TaskProvider: React.FC<any> = ({ children }) => {
-  const [tasks, setTasks] = useState<TaskType[]>(exampleTasks)
+  const [tasks, setTasks] = useState<TaskType[]>([])
+
+  const getTasks = async () => {
+    const res = await fetch('http://localhost:3000/tasks')
+    const data: TaskType[] = await res.json()
+
+    setTasks(data)
+  }
+
+  useEffect(() => {
+    getTasks()
+  },[])
+
   return (
     <TaskContext.Provider value={{ tasks, setTasks }}>
       {children}
