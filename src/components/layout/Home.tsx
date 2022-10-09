@@ -1,8 +1,7 @@
 import { useContext } from 'react'
-import { HiPlus } from 'react-icons/hi'
-
 import TaskContext, { TaskType } from '../../context/TaskContext'
 import Task from '../Task'
+import TaskModal from '../TaskModal'
 
 const Home: React.FC = () => {
   const { tasks } = useContext(TaskContext)
@@ -12,9 +11,7 @@ const Home: React.FC = () => {
       {tasks.map((task: TaskType) => (
         <Task key={task.id} title={task.title} body={task.body} />
       ))}
-      <button className="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg fixed right-5 bottom-5 rounded-full">
-        <HiPlus size="5vh" />
-      </button>
+      <TaskModal isOpen={false}/>
     </div>
   )
 }
