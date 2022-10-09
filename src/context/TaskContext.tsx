@@ -12,7 +12,7 @@ export const TaskProvider: React.FC<any> = ({ children }) => {
   const [tasks, setTasks] = useState<TaskType[]>([])
 
   const getTasks = async () => {
-    const res = await fetch('http://localhost:3000/tasks')
+    const res = await fetch('http://localhost:5000/tasks')
     const data: TaskType[] = await res.json()
 
     setTasks(data)
