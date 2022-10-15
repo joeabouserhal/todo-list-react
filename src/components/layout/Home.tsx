@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   const { tasks } = useContext(TaskContext)
   // console.log(tasks)
   return (
-    <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+    <div className='mb-20 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {tasks.map((task: TaskType) => (
         <Task key={task.id} task={task}/>
       ))}
