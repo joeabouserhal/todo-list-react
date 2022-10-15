@@ -18,12 +18,24 @@ export const TaskProvider: React.FC<any> = ({ children }) => {
     setTasks(data)
   }
 
+  const addTask = async (newTask: TaskType) => {
+    // send task to server
+    const response = await fetch("http://localhost:5000/tasks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newTask),
+    });
+    const data = await response.json();
+    // update state
+    setTasks([data, ...tasks]);
+  }
+
   useEffect(() => {
     getTasks()
   },[])
 
   return (
-    <TaskContext.Provider value={{ tasks, setTasks }}>
+    <TaskContext.Provider value={{ tasks, addTask }}>
       {children}
     </TaskContext.Provider>
   )

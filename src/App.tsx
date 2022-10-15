@@ -10,7 +10,7 @@ function App() {
       <TaskProvider>
         <Router>
           <Navbar />
-          <div className="px-16 pt-4">
+          <div className="h-[90vh] px-4 lg:px-16 pt-4 pb-1">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

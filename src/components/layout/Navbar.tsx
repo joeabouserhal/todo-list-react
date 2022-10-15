@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar flex justify-between px-16 shadow-md">
+    <nav className="navbar h-[10vh] flex justify-between px-4 lg:px-16 shadow-md">
       <div>
         <GoTasklist size="5vh" className="mr-5" />
         <h1 className="text-lg">To-Do List</h1>
