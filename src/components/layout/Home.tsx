@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   return (
     <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {tasks.map((task: TaskType) => (
-        <Task key={task.id} title={task.title} body={task.body} />
+        <Task key={task.id} task={task}/>
       ))}
       <TaskModal isOpen={false}/>
     </div>

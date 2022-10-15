@@ -1,20 +1,31 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
+import TaskContext, { TaskType } from '../context/TaskContext'
+import ReadMore from './ReadMore'
 
-interface Task {
-  id?: number
-  title: string
-  body: string
+interface Props {
+  task:TaskType
 }
 
-const Task: React.FC<Task> = (props: Task) => {
+const Task: React.FC<Props> = (props: Props) => {
+  const {setDone} = useContext(TaskContext)
+  const [checked, setChecked] = useState(props.task.done)
+  const handleCheck = () => {
+    setChecked(!checked)
+    setDone(props.task.id, !checked)
+  }
   return (
     <div className="container bg-gray-200 rounded-lg p-4 shadow-lg flex justify-between">
-      <div>
-        <h4 className="font-semibold text-lg">{props.title}</h4>
-        <p className=''>{props.body}</p>
+      <div className="w-[100%]">
+        <h4 className="font-semibold text-lg">{props.task.title}</h4>
+        <ReadMore description={props.task.description} />
       </div>
-      <div className='my-auto'>
-        <input type={"checkbox"} className="checkbox overflow-clip"></input>
+      <div className="my-auto">
+        <input
+          type={'checkbox'}
+          className="checkbox overflow-clip"
+          checked={checked}
+          onChange={handleCheck}
+        />
       </div>
     </div>
   )

@@ -5,7 +5,8 @@ const TaskContext = createContext<any>(undefined)
 export type TaskType = {
   id?: number
   title: string
-  body: string
+  description: string
+  done: boolean
 }
 
 export const TaskProvider: React.FC<any> = ({ children }) => {
@@ -20,22 +21,35 @@ export const TaskProvider: React.FC<any> = ({ children }) => {
 
   const addTask = async (newTask: TaskType) => {
     // send task to server
-    const response = await fetch("http://localhost:5000/tasks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    const response = await fetch('http://localhost:5000/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newTask),
-    });
-    const data = await response.json();
+    })
+    const data = await response.json()
     // update state
-    setTasks([data, ...tasks]);
+    setTasks([data, ...tasks])
+  }
+
+  const setDone = async (id: number, done: boolean) => {
+    const response = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ done: done }),
+    })
+    const data = await response.json()
+    // update state
+    setTasks(
+      tasks.map((item) => (item.id === id ? { ...item, ...data } : item))
+    )
   }
 
   useEffect(() => {
     getTasks()
-  },[])
+  }, [])
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask }}>
+    <TaskContext.Provider value={{ tasks, addTask, setDone }}>
       {children}
     </TaskContext.Provider>
   )
