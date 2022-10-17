@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import TaskContext, { TaskType } from '../context/TaskContext'
 import ReadMore from './ReadMore'
 
 interface Props {
-  task:TaskType
+  task: TaskType
 }
 
 const Task: React.FC<Props> = (props: Props) => {
-  const {setDone} = useContext(TaskContext)
+  const { setDone } = useContext(TaskContext)
   const [checked, setChecked] = useState(props.task.done)
   const handleCheck = () => {
     setChecked(!checked)

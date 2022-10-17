@@ -10,6 +10,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="mb-20">
+      {/* Uncompleted Tasks Section */}
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tasks
           .filter((item: TaskType) => item.done != true)
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
           </Divider>
         </div>
       </div>
+      {/* Completed tasks section */}
       <div
         className={`${
           showCompleted ? `visible` : `hidden`
