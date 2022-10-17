@@ -18,7 +18,8 @@ const TaskModal: React.FC<Props> = (props: Props) => {
     if (titleRef.current.value) {
       addTask({
         title: titleRef.current.value,
-        body: bodyRef.current.value
+        description: bodyRef.current.value,
+        done: false
       })
       titleRef.current.value = ""
       bodyRef.current.value = ""
