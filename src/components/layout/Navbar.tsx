@@ -12,13 +12,13 @@ const Navbar: React.FC = () => {
       <div className="gap-2">
         <Link to={'/'}>
           <button className="btn btn-ghost capitalize gap-2">
-            <GoHome size="1.5rem" />
+            <GoHome size="1.5rem" className='hidden sm:block' />
             Home
           </button>
         </Link>
         <Link to={'/about'}>
           <button className="btn btn-ghost capitalize gap-2">
-            <GoInfo size="1.5rem"/>
+            <GoInfo size="1.5rem" className='hidden sm:block'/>
             About
           </button>
         </Link>
