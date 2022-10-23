@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
-import TaskContext, { TaskType } from '../context/TaskContext'
+import TaskContext from '../context/TaskContext'
+import { TaskType } from '../types/TaskType'
 import ReadMore from './ReadMore'
 
 interface Props {

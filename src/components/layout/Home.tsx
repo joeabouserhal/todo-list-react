@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
-import TaskContext, { TaskType } from '../../context/TaskContext'
+import TaskContext from '../../context/TaskContext'
+import { TaskType } from '../../types/TaskType'
 import Divider from '../Divider'
 import Task from '../Task'
 import TaskModal from '../TaskModal'

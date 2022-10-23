@@ -1,13 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
+import { TaskType } from '../types/TaskType'
 
 const TaskContext = createContext<any>(undefined)
 
-export type TaskType = {
-  id: number
-  title: string
-  description: string
-  done: boolean
-}
 
 export const TaskProvider: React.FC<any> = ({ children }) => {
   const [tasks, setTasks] = useState<TaskType[]>([])
